@@ -19,7 +19,7 @@ jobs:
         with:
           flutter-version: '2.10.5'
       - run: flutter pub get
-      - run: flutter build apk --debug --split-per-abi
+      - run: flutter build apk lib/Modules/EntryPointApp/Presentation/Pages/main.dart --debug --split-per-abi
       #- run: |
       #    flutter build ios --no-codesign
       #    cd build/ios/iphoneos
