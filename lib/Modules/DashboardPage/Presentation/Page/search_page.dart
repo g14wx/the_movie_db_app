@@ -127,7 +127,7 @@ class SearchPage extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (_) {
                                     return BlocProvider(
-                                      create: (_) => getIt<MoviesSearchBloc>(),
+                                      create: (_) => getIt<MovieSuggestionsBloc>(),
                                       child: DetailScreen(
                                         movie: movies.movies[index],
                                         env: ProductionEnvTMDB(),

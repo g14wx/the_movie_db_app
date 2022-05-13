@@ -119,7 +119,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                         builder: (_) {
                                           return BlocProvider(
                                             create: (_) =>
-                                                getIt<MoviesSearchBloc>(),
+                                                getIt<MovieSuggestionsBloc>(),
                                             child: DetailScreen(
                                               movie: movies.movies[index],
                                               env: ProductionEnvTMDB(),
