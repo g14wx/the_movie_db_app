@@ -1,0 +1,30 @@
+name: Flutter Web
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: Build Web
+    env:
+      my_secret: ${{secrets.PAT}}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'dev'
+      - run: flutter config --enable-web
+      - run: flutter pub get
+      - run: flutter build web --release
+      - run: |
+          cd build/web
+          git init
+          git config --global user.email carlos.hernandez3@catolica.edu.sv
+          git config --global user.name g14wx
+          git status
+          git remote add origin https://${{secrets.PAT}}@github.com:g14wx/the_movie_db_app.git
+          git checkout -b gh-pages
+          git add --all
+          git commit -m "update web"
+          git push origin gh-pages -f
