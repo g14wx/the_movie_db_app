@@ -14,7 +14,7 @@ class LoginPage extends StatelessWidget {
             reverse: true,
             child: Container(
               height: MediaQuery.of(context).size.height - 80,
-              child: LoginForm()
+              child: const LoginForm()
             ),
           ),
         ),

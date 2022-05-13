@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:the_movie_db_app/Models/Login/login_credentials.dart';
-import 'package:the_movie_db_app/Models/Login/login_response.dart';
 import 'package:the_movie_db_app/Modules/LoginPage/Data/Failures/failures.dart';
 
 abstract class ITheMovieDbAuthRequests {

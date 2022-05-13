@@ -25,4 +25,13 @@ class ProductionEnvTMDB implements IEnvTMDB {
   @override
   String HTTPS = "https://";
 
+  @override
+  String GET_ALL_MOVIES="/movie/popular";
+
+  @override
+  String FETCH_POSTER_PATH= "https://image.tmdb.org/t/p/original/";
+
+  @override
+  String SERCH_MOVIE_PATH= "/search/movie";
+
 }

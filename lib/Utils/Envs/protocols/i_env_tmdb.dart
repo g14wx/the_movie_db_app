@@ -6,4 +6,7 @@ abstract class IEnvTMDB {
   late String SESSION_PATH;
   late String VERSION_PATH;
   late String HTTPS;
+  late String GET_ALL_MOVIES;
+  late String FETCH_POSTER_PATH;
+  late String SERCH_MOVIE_PATH;
 }
