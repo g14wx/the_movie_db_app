@@ -35,6 +35,6 @@ class ProductionEnvTMDB implements IEnvTMDB {
   String SERCH_MOVIE_PATH= "/search/movie";
 
   @override
-  String SUGGESTIONS_PATH = "/movie/";
+  String SUGGESTIONS_PATH = "/movie";
 
 }

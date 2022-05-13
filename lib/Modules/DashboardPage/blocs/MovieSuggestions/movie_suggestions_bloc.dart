@@ -20,7 +20,7 @@ class MovieSuggestionsBloc
     on<MovieSuggestionsEvent>((event, emit) async {
       await event.map(fetchSuggestions: (value) async {
         emit(const MovieSuggestionsState.loading());
-        final resultMovies = await service.getAllMovies(apiKey: env.API_KEY);
+        final resultMovies = await service.getSuggestions(apiKey: env.API_KEY,movieId: value.movieId);
         resultMovies.fold(
             (l) => emit(MovieSuggestionsState.error(msg: l.toString())),
             (r) => {emit(MovieSuggestionsState.loaded(movies: r))});

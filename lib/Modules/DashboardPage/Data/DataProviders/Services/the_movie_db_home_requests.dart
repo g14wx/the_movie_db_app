@@ -67,7 +67,7 @@ class TheMovieDbHomeRequests implements ITheMovieDbHomeRequests {
   Future<Either<Exception, Map<String, dynamic>>> getSuggestions({required int movieId, required String apiKey}) async {
     final url = _env.HOSTNAME;
     final path = "${_env.VERSION_PATH}${_env.SUGGESTIONS_PATH}/${movieId.toString()}/recommendations";
-    final body = {"api_key": apiKey, "movie_id": movieId};
+    final body = {"api_key": apiKey};
 
     final Either<Exception, DataServiceResponse> result =
         await _dataService.get(url: url, path: path, body: body);
