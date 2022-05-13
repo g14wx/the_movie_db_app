@@ -1,10 +1,10 @@
 on:
   pull_request:
     branches:
-      - developtment
+      - develop
   push:
     branches:
-      - development
+      - develop
 name: "Build & Release for development"
 jobs:
   build:
@@ -18,8 +18,6 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '2.5.3'
-      - run: git clone https://github.com/fluttercommunity/font_awesome_flutter.git
-      - run: cd font_awesome_flutter && flutter pub get && cd util && sudo chmod +x configurator.sh && ./configurator.sh --dynamic && cd ..
       - run: flutter pub get
       - run: flutter build apk --debug --split-per-abi
       #- run: |
