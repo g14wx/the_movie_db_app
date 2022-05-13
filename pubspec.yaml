@@ -57,8 +57,7 @@ dev_dependencies:
   freezed: ^2.0.3+1
   build_runner: ^2.1.10
   injectable_generator: ^1.5.3
-  flutter_launcher_icons: ^0.9.2
-
+  flutter_launcher_icons_maker: ^0.10.2
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
@@ -72,6 +71,9 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
+  macos: true
+  windows: true
+  web: true
   image_path: "assets/icons/icon.png"
 # The following section is specific to Flutter.
 flutter:
