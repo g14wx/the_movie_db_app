@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:the_movie_db_app/Constants/assets_locations.dart';
 import 'package:the_movie_db_app/Modules/DashboardPage/Presentation/Screen/detail_screen.dart';
+import 'package:the_movie_db_app/Modules/DashboardPage/blocs/MovieSuggestions/movie_suggestions_bloc.dart';
 import 'package:the_movie_db_app/Modules/DashboardPage/blocs/MoviesSearchBloc/movies_search_bloc.dart';
 import 'package:the_movie_db_app/Utils/Envs/TMDB/production_env_TMDB.dart';
 import 'package:the_movie_db_app/Utils/Envs/protocols/i_env_tmdb.dart';
@@ -100,7 +101,7 @@ class SearchPage extends StatelessWidget {
                                     builder: (_) {
                                       return BlocProvider(
                                         create: (_) =>
-                                            getIt<MoviesSearchBloc>(),
+                                            getIt<MovieSuggestionsBloc>(),
                                         child: DetailScreen(
                                           movie: movies.movies[index],
                                           env: ProductionEnvTMDB(),
