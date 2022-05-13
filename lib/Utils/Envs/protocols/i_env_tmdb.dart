@@ -9,4 +9,5 @@ abstract class IEnvTMDB {
   late String GET_ALL_MOVIES;
   late String FETCH_POSTER_PATH;
   late String SERCH_MOVIE_PATH;
+  late String SUGGESTIONS_PATH;
 }

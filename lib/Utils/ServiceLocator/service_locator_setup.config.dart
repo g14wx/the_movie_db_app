@@ -7,9 +7,11 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../Modules/DashboardPage/blocs/MoviesBloc/movies_bloc.dart' as _i18;
+import '../../Modules/DashboardPage/blocs/MoviesBloc/movies_bloc.dart' as _i19;
 import '../../Modules/DashboardPage/blocs/MoviesSearchBloc/movies_search_bloc.dart'
-    as _i19;
+    as _i20;
+import '../../Modules/DashboardPage/blocs/MovieSuggestions/movie_suggestions_bloc.dart'
+    as _i18;
 import '../../Modules/DashboardPage/Data/DataProviders/Protocols/i_the_movie_db_home_requests.dart'
     as _i13;
 import '../../Modules/DashboardPage/Data/DataProviders/Protocols/i_the_movie_db_home_service.dart'
@@ -29,7 +31,7 @@ import '../../Modules/LoginPage/Data/DataProviders/Services/the_movie_db_auth_re
 import '../../Modules/LoginPage/Data/DataProviders/Services/the_movie_db_auth_service.dart'
     as _i12;
 import '../../Modules/SwitcherPage/BusinessLogic/blocs/CheckTokenAvaility/check_token_availity_bloc.dart'
-    as _i20;
+    as _i21;
 import '../../Networking/DataService/protocols/i_data_service.dart' as _i3;
 import '../../Networking/DataService/Services/data_service_http.dart' as _i4;
 import '../DataStorage/protocols/i_data_storage.dart' as _i5;
@@ -58,11 +60,13 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       get<_i11.ITheMovieDbAuthService>(),
       get<_i5.IDataStorage>(),
       get<_i7.IEnvTMDB>()));
-  gh.factory<_i18.MoviesBloc>(() =>
-      _i18.MoviesBloc(get<_i15.ITheMovieDbHomeService>(), get<_i7.IEnvTMDB>()));
-  gh.factory<_i19.MoviesSearchBloc>(() => _i19.MoviesSearchBloc(
+  gh.factory<_i18.MovieSuggestionsBloc>(() => _i18.MovieSuggestionsBloc(
       get<_i15.ITheMovieDbHomeService>(), get<_i7.IEnvTMDB>()));
-  gh.factory<_i20.CheckTokenAvailityBloc>(
-      () => _i20.CheckTokenAvailityBloc(get<_i5.IDataStorage>()));
+  gh.factory<_i19.MoviesBloc>(() =>
+      _i19.MoviesBloc(get<_i15.ITheMovieDbHomeService>(), get<_i7.IEnvTMDB>()));
+  gh.factory<_i20.MoviesSearchBloc>(() => _i20.MoviesSearchBloc(
+      get<_i15.ITheMovieDbHomeService>(), get<_i7.IEnvTMDB>()));
+  gh.factory<_i21.CheckTokenAvailityBloc>(
+      () => _i21.CheckTokenAvailityBloc(get<_i5.IDataStorage>()));
   return get;
 }

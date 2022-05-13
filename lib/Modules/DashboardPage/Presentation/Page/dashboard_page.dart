@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:the_movie_db_app/Constants/assets_locations.dart';
 import 'package:the_movie_db_app/Modules/DashboardPage/Presentation/Page/search_page.dart';
 import 'package:the_movie_db_app/Modules/DashboardPage/Presentation/Screen/detail_screen.dart';
+import 'package:the_movie_db_app/Modules/DashboardPage/blocs/MovieSuggestions/movie_suggestions_bloc.dart';
 import 'package:the_movie_db_app/Modules/DashboardPage/blocs/MoviesBloc/movies_bloc.dart';
 import 'package:the_movie_db_app/Modules/DashboardPage/blocs/MoviesSearchBloc/movies_search_bloc.dart';
 import 'package:the_movie_db_app/Utils/Envs/TMDB/production_env_TMDB.dart';
@@ -92,9 +93,10 @@ class _DashboardPageState extends State<DashboardPage> {
                                         builder: (_) {
                                           return BlocProvider(
                                             create: (_) =>
-                                                getIt<MoviesSearchBloc>(),
+                                                getIt<MovieSuggestionsBloc>(),
                                             child: DetailScreen(
-                                              idMovie: movies.movies[index].id,
+                                              movie: movies.movies[index],
+                                              env: ProductionEnvTMDB(),
                                             ),
                                           );
                                         },
@@ -102,14 +104,32 @@ class _DashboardPageState extends State<DashboardPage> {
                               },
                               child: CachedNetworkImage(
                                 imageUrl:
-                                    "${widget.env.FETCH_POSTER_PATH}${movies.movies[index].poster_path!}",
+                                    "${widget.env.FETCH_POSTER_PATH}${movies.movies[index].poster_path}",
                                 placeholder: (context, url) =>
                                     const CircularProgressIndicator(),
                                 errorWidget: (context, url, error) =>
                                     const Icon(Icons.error),
                               ),
                             )
-                          : Lottie.asset(AssetsLocations.PLACEHOLDER_IMAGE),
+                          : GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) {
+                                          return BlocProvider(
+                                            create: (_) =>
+                                                getIt<MoviesSearchBloc>(),
+                                            child: DetailScreen(
+                                              movie: movies.movies[index],
+                                              env: ProductionEnvTMDB(),
+                                            ),
+                                          );
+                                        },
+                                        fullscreenDialog: true));
+                              },
+                              child: Lottie.asset(
+                                  AssetsLocations.PLACEHOLDER_IMAGE)),
                       footer: GridTileBar(
                         backgroundColor: Colors.black54,
                         title: Text(
@@ -117,9 +137,8 @@ class _DashboardPageState extends State<DashboardPage> {
                           style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
-                        subtitle: Text(
-                            "\$${movies.movies[index].vote_average.toString()}"),
-                        trailing: const Icon(Icons.favorite),
+                        subtitle:
+                            Text(movies.movies[index].vote_average.toString()),
                       ),
                     ); /*Container(
                       padding: const EdgeInsets.all(8),
