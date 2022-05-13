@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
-import 'package:the_movie_db_app/Modules/SwitcherPage/Presentation/BusinessLogic/blocs/CheckTokenAvaility/check_token_availity_bloc.dart';
+import 'package:the_movie_db_app/Constants/assets_locations.dart';
+import 'package:the_movie_db_app/Modules/SwitcherPage/BusinessLogic/blocs/CheckTokenAvaility/check_token_availity_bloc.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -29,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Lottie.asset("assets/lottie/splash-screen.json",
+      child: Lottie.asset( AssetsLocations.LOTTIE_SPLASH_SCREEN_ANIMATION,
           controller: _animationController, onLoaded: (composition) {
 
         _animationController.addStatusListener((status) {
