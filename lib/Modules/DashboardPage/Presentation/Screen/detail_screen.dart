@@ -7,6 +7,7 @@ import 'package:the_movie_db_app/Models/Movie/movie.dart';
 import 'package:the_movie_db_app/Modules/DashboardPage/blocs/MovieSuggestions/movie_suggestions_bloc.dart';
 import 'package:the_movie_db_app/Utils/Envs/TMDB/production_env_TMDB.dart';
 import 'package:the_movie_db_app/Utils/Envs/protocols/i_env_tmdb.dart';
+import 'package:the_movie_db_app/Utils/Router/AppRouter/Routes.dart';
 import 'package:the_movie_db_app/Utils/ServiceLocator/service_locator_setup.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -34,6 +35,11 @@ class _DetailScreenState extends State<DetailScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("${widget.movie.title}"),
+        actions: [
+          ElevatedButton.icon(onPressed: (){
+            Navigator.of(context).popUntil((route) => route.isFirst);
+          }, icon: const Icon(Icons.home), label: const Text("Home"))
+        ],
       ),
       body: CustomScrollView(
         slivers: [
